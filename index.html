@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My First CI/CD App</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #0f172a;
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .card {
+      background: #1e293b;
+      padding: 3rem 4rem;
+      border-radius: 12px;
+      text-align: center;
+      border: 1px solid #334155;
+    }
+    h1 { margin: 0 0 1rem; color: #38bdf8; }
+    .meta { font-size: 0.9rem; color: #94a3b8; line-height: 1.8; }
+    code { color: #fbbf24; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Deployed by Jenkins</h1>
+    <p>Hello from our first CI/CD pipeline.</p>
+    <div class="meta">
+      Build number: <code>__BUILD_NUMBER__</code><br>
+      Commit: <code>__GIT_COMMIT__</code><br>
+      Deployed at: <code>__BUILD_TIME__</code>
+    </div>
+  </div>
+</body>
+</html>
