@@ -1,7 +1,19 @@
 pipeline {
     agent any
 
+    options {
+        timeout(time: 10, unit: 'MINUTES')
+        buildDiscarder(logRotator(numToKeepStr: '10'))
+        timestamps()
+    }
+
     stages {
+        stage('Checkout') {
+            steps {
+                cleanWs()
+                checkout scm
+            }
+        }
         stage('Build') {
             steps {
                 echo "Build number ${env.BUILD_NUMBER} on ${env.NODE_NAME}"
@@ -22,7 +34,7 @@ pipeline {
 
     post {
         success {
-            archiveArtifacts artifacts: '*.tar.gz', fingerprint: true
+            archiveArtifacts artifacts: 'app-*.tar.gz', fingerprint: true
         }
         always {
             echo "Pipeline finished with status: ${currentBuild.currentResult}"
