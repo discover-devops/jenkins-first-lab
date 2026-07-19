@@ -2,39 +2,79 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My First CI/CD App</title>
+  <title>CI/CD Pipeline Demo</title>
   <style>
+    * { box-sizing: border-box; }
     body {
       font-family: system-ui, sans-serif;
-      background: #0f172a;
-      color: #e2e8f0;
+      background: linear-gradient(135deg, #065f46 0%, #064e3b 100%);
+      color: #ecfdf5;
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      min-height: 100vh;
       margin: 0;
     }
     .card {
-      background: #1e293b;
+      background: rgba(6, 78, 59, 0.6);
+      border: 1px solid #10b981;
+      border-radius: 16px;
       padding: 3rem 4rem;
-      border-radius: 12px;
       text-align: center;
-      border: 1px solid #334155;
+      max-width: 640px;
     }
-    h1 { margin: 0 0 1rem; color: #38bdf8; }
-    .meta { font-size: 0.9rem; color: #94a3b8; line-height: 1.8; }
-    code { color: #fbbf24; }
+    .badge {
+      display: inline-block;
+      background: #10b981;
+      color: #022c22;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 0.3rem 0.9rem;
+      border-radius: 999px;
+      margin-bottom: 1.5rem;
+    }
+    h1 { margin: 0 0 0.5rem; font-size: 2.4rem; color: #a7f3d0; }
+    .sub { color: #6ee7b7; margin: 0 0 2rem; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      border-top: 1px solid #047857;
+      padding-top: 1.5rem;
+    }
+    .item .label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #34d399;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    .item .value { font-family: ui-monospace, monospace; color: #fde68a; font-size: 0.95rem; }
+    .foot { margin-top: 2rem; font-size: 0.8rem; color: #34d399; }
   </style>
 </head>
 <body>
   <div class="card">
-    <h1>Deployed by Jenkins</h1>
-    <p>Hello from our first CI/CD pipeline.</p>
-    <div class="meta">
-      Build number: <code>__BUILD_NUMBER__</code><br>
-      Commit: <code>__GIT_COMMIT__</code><br>
-      Deployed at: <code>__BUILD_TIME__</code>
+    <span class="badge">VERSION 2 &middot; AUTO DEPLOYED</span>
+    <h1>Pipeline Updated Successfully</h1>
+    <p class="sub">This page changed because someone pushed to Git. Nobody touched the server.</p>
+    <div class="grid">
+      <div class="item">
+        <span class="label">Build</span>
+        <span class="value">__BUILD_NUMBER__</span>
+      </div>
+      <div class="item">
+        <span class="label">Commit</span>
+        <span class="value">__GIT_COMMIT__</span>
+      </div>
+      <div class="item">
+        <span class="label">Deployed</span>
+        <span class="value">__BUILD_TIME__</span>
+      </div>
     </div>
+    <p class="foot">Laptop &rarr; GitHub &rarr; Jenkins &rarr; nginx &rarr; you</p>
   </div>
 </body>
 </html>
